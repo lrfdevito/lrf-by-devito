@@ -1,51 +1,107 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>LRF by De Vito</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
-    body, html {
+    body {
       margin: 0;
-      padding: 0;
-      height: 100%;
       font-family: sans-serif;
+      background: #f4f4f4;
+      color: #222;
     }
-    #map {
-      height: 100vh;
-      width: 100%;
-    }
+
     header {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 0.5rem 1rem;
+      background: #1e3a8a;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: #2563eb;
+    }
+
+    nav a {
+      padding: 0.75rem 1rem;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      background: #1d4ed8;
+    }
+
+    .container {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .map-button {
+      background: #10b981;
+      border: none;
+      color: white;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
       border-radius: 0.5rem;
-      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+      cursor: pointer;
+      margin-top: 1.5rem;
+    }
+
+    .map-button:hover {
+      background: #059669;
+    }
+
+    footer {
+      margin-top: 3rem;
+      padding: 1rem;
+      background: #f9fafb;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
     }
   </style>
 </head>
 <body>
+
+  <!-- Λογότυπο και τίτλος -->
   <header>
-    <h2>🎣 LRF by De Vito</h2>
-    <p>Προεπισκόπηση χάρτη δραστηριότητας</p>
+    <h1>🎣 LRF by De Vito</h1>
+    <p>Light Rock Fishing στην Τήνο και όχι μόνο</p>
   </header>
-  <div id="map"></div>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    const map = L.map('map').setView([37.598, 25.154], 11); // Περιοχή Τήνου
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors'
-    }).addTo(map);
+  <!-- Μενού πλοήγησης -->
+  <nav>
+    <a href="#">Αρχική</a>
+    <a href="#">Πρόγνωση</a>
+    <a href="map.html">Χάρτης</a>
+    <a href="#">Τι είναι το LRF</a>
+    <a href="#">Τεχνικές & Tips</a>
+    <a href="#">Είδη-Στόχοι</a>
+    <a href="#">Φωτογραφίες & Βίντεο</a>
+    <a href="#">Επικοινωνία</a>
+  </nav>
 
-    // Δείγμα σημείου (προσωρινό)
-    const marker = L.marker([37.6, 25.16]).addTo(map)
-      .bindPopup('Δείγμα σημείου δραστηριότητας για σαργό')
-      .openPopup();
-  </script>
+  <!-- Περιεχόμενο αρχικής σελίδας -->
+  <div class="container">
+    <h2>Καλώς ήρθες στο LRF by De Vito!</h2>
+    <p>Εδώ θα βρεις προβλέψεις δραστηριότητας για είδη όπως σαργός, λούτσος, μελανούρι, ροφός, στήρα, σφυρίδα και άλλα. Αναλυτικά στοιχεία για την περιοχή της Τήνου, χάρτες με βυθομετρήσεις και σημεία πρόσβασης.</p>
+
+    <!-- Κουμπί για χάρτη -->
+    <a href="map.html">
+      <button class="map-button">Άνοιγμα Διαδραστικού Χάρτη</button>
+    </a>
+  </div>
+
+  <!-- Υποσέλιδο -->
+  <footer>
+    © 2025 LRF by De Vito — Με αγάπη για το ψάρεμα
+  </footer>
+
 </body>
 </html>
