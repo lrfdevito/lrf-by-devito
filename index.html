@@ -1,39 +1,51 @@
-
 <!DOCTYPE html>
 <html lang="el">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LRF by De Vito</title>
-    <link href="style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LRF by De Vito</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+    header {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 5px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>LRF by De Vito</h1>
-        <p>Light Rock Fishing στην Τήνο - Δραστηριότητα ψαριών & Χάρτης</p>
-    </header>
-    <main>
-        <section>
-            <h2>Επίλεξε είδος ψαριού:</h2>
-            <select id="fishSelect">
-                <option value="sargos">Σαργός</option>
-                <option value="melanouri">Μελανούρι</option>
-                <option value="loutsos">Λούτσος</option>
-                <option value="stira">Στήρα</option>
-                <option value="sfyrida">Σφυρίδα</option>
-                <option value="rofos">Ροφός</option>
-                <option value="magiatiko">Μαγιάτικο</option>
-                <option value="palamida">Παλαμίδα</option>
-                <option value="safridi">Σαφρίδι</option>
-            </select>
-        </section>
-        <section id="mapArea">
-            <h2>Χάρτης Δραστηριότητας</h2>
-            <div id="map">[Χάρτης με θερμοχρωμική απεικόνιση εδώ]</div>
-        </section>
-    </main>
-    <footer>
-        <p>© 2025 LRF by De Vito</p>
-    </footer>
+  <header>
+    <h2>🎣 LRF by De Vito</h2>
+    <p>Προεπισκόπηση χάρτη δραστηριότητας</p>
+  </header>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([37.598, 25.154], 11); // Περιοχή Τήνου
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Δείγμα σημείου (προσωρινό)
+    const marker = L.marker([37.6, 25.16]).addTo(map)
+      .bindPopup('Δείγμα σημείου δραστηριότητας για σαργό')
+      .openPopup();
+  </script>
 </body>
 </html>
