@@ -1,125 +1,25 @@
 <!DOCTYPE html>
 <html lang="el">
 <head>
-  <meta charset="UTF-8">
-  <title>Χάρτης Δραστηριότητας</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    nav {
-      background-color: #0f172a;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      padding: 10px 20px;
-      align-items: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-    }
-
-    #controls {
-      padding: 10px;
-      background: #f1f5f9;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    #map {
-      width: 100%;
-      height: calc(100vh - 96px); /* 48px navbar + 48px controls */
-    }
-
-    select {
-      padding: 5px;
-      font-size: 1em;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Χάρτης LRF</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Μενού Πλοήγησης -->
-  <nav>
-    <div><strong>LRF by De Vito</strong></div>
-    <div>
+  <header>
+    <nav>
       <a href="index.html">Αρχική</a>
-      <a href="forecast.html">Πρόγνωση</a>
       <a href="map.html">Χάρτης</a>
-      <a href="techniques.html">Τεχνικές</a>
-      <a href="contact.html">Επικοινωνία</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Διαδραστικός Χάρτης Δραστηριότητας Ψαριών</h1>
+    <div id="map" style="width: 100%; height: 500px; background: #eee;">
+      <!-- Εδώ θα μπει ο Leaflet.js ή άλλος χάρτης -->
+      <p style="text-align: center; padding-top: 200px;">Ο χάρτης θα εμφανιστεί εδώ σύντομα.</p>
     </div>
-  </nav>
-
-  <!-- Επιλογές -->
-  <div id="controls">
-    <label for="fish-select">Είδος ψαριού: </label>
-    <select id="fish-select">
-      <option value="sargos">Σαργός</option>
-      <option value="melanouri">Μελανούρι</option>
-      <option value="loutsos">Λούτσος</option>
-      <option value="stira">Στήρα</option>
-      <option value="sfyrida">Σφυρίδα</option>
-      <option value="rofos">Ροφός</option>
-      <option value="magiatiko">Μαγιάτικο</option>
-      <option value="palamida">Παλαμίδα</option>
-      <option value="safridi">Σαφρίδι</option>
-    </select>
-  </div>
-
-  <!-- Χάρτης -->
-  <div id="map"></div>
-
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-  <script>
-    const map = L.map('map').setView([37.6, 25.15], 11);
-
-    // Background layer
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
-
-    // Dummy data layers (προσωρινά σημεία)
-    const layers = {
-      sargos: L.layerGroup([L.marker([37.61, 25.14]).bindPopup('Δραστηριότητα σαργού')]),
-      melanouri: L.layerGroup([L.marker([37.63, 25.13]).bindPopup('Δραστηριότητα μελανούρι')]),
-      loutsos: L.layerGroup([L.marker([37.6, 25.18]).bindPopup('Δραστηριότητα λούτσου')]),
-      stira: L.layerGroup([L.marker([37.58, 25.12]).bindPopup('Στήρα πιθανή παρουσία')]),
-      sfyrida: L.layerGroup([L.marker([37.59, 25.16]).bindPopup('Σφυρίδα παρατηρημένη')]),
-      rofos: L.layerGroup([L.marker([37.6, 25.15]).bindPopup('Ροφός πιθανή εμφάνιση')]),
-      magiatiko: L.layerGroup([L.marker([37.62, 25.17]).bindPopup('Μαγιάτικο δραστήριο')]),
-      palamida: L.layerGroup([L.marker([37.64, 25.11]).bindPopup('Παλαμίδα καταγράφηκε')]),
-      safridi: L.layerGroup([L.marker([37.65, 25.14]).bindPopup('Σαφρίδι υψηλή πιθανότητα')])
-    };
-
-    // Εμφάνιση default layer
-    let currentLayer = layers["sargos"];
-    currentLayer.addTo(map);
-
-    // Dropdown επιλογή
-    document.getElementById("fish-select").addEventListener("change", (e) => {
-      const fish = e.target.value;
-      if (currentLayer) {
-        map.removeLayer(currentLayer);
-      }
-      currentLayer = layers[fish];
-      if (currentLayer) {
-        currentLayer.addTo(map);
-      }
-    });
-  </script>
+  </main>
 </body>
 </html>
