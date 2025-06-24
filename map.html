@@ -9,17 +9,74 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
   <style>
-    body, html {
+    body {
       margin: 0;
-      height: 100%;
+      font-family: Arial, sans-serif;
     }
+
+    nav {
+      background-color: #0f172a;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 20px;
+      align-items: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+    }
+
+    #controls {
+      padding: 10px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     #map {
-      height: 100%;
       width: 100%;
+      height: calc(100vh - 96px); /* 48px navbar + 48px controls */
+    }
+
+    select {
+      padding: 5px;
+      font-size: 1em;
     }
   </style>
 </head>
 <body>
+
+  <!-- Μενού Πλοήγησης -->
+  <nav>
+    <div><strong>LRF by De Vito</strong></div>
+    <div>
+      <a href="index.html">Αρχική</a>
+      <a href="forecast.html">Πρόγνωση</a>
+      <a href="map.html">Χάρτης</a>
+      <a href="techniques.html">Τεχνικές</a>
+      <a href="contact.html">Επικοινωνία</a>
+    </div>
+  </nav>
+
+  <!-- Επιλογές -->
+  <div id="controls">
+    <label for="fish-select">Είδος ψαριού: </label>
+    <select id="fish-select">
+      <option value="sargos">Σαργός</option>
+      <option value="melanouri">Μελανούρι</option>
+      <option value="loutsos">Λούτσος</option>
+      <option value="stira">Στήρα</option>
+      <option value="sfyrida">Σφυρίδα</option>
+      <option value="rofos">Ροφός</option>
+      <option value="magiatiko">Μαγιάτικο</option>
+      <option value="palamida">Παλαμίδα</option>
+      <option value="safridi">Σαφρίδι</option>
+    </select>
+  </div>
 
   <!-- Χάρτης -->
   <div id="map"></div>
@@ -28,20 +85,41 @@
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
   <script>
-    // Αρχικοποίηση χάρτη στην Τήνο
     const map = L.map('map').setView([37.6, 25.15], 11);
 
-    // Βασικό layer - δορυφορικός χάρτης OpenStreetMap
+    // Background layer
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
 
-    // Παράδειγμα σημείου ενδιαφέροντος
-    const marker = L.marker([37.61, 25.15]).addTo(map);
-    marker.bindPopup("<b>Σημείο Ψαρέματος</b><br>Πιθανή δραστηριότητα σαργού.");
+    // Dummy data layers (προσωρινά σημεία)
+    const layers = {
+      sargos: L.layerGroup([L.marker([37.61, 25.14]).bindPopup('Δραστηριότητα σαργού')]),
+      melanouri: L.layerGroup([L.marker([37.63, 25.13]).bindPopup('Δραστηριότητα μελανούρι')]),
+      loutsos: L.layerGroup([L.marker([37.6, 25.18]).bindPopup('Δραστηριότητα λούτσου')]),
+      stira: L.layerGroup([L.marker([37.58, 25.12]).bindPopup('Στήρα πιθανή παρουσία')]),
+      sfyrida: L.layerGroup([L.marker([37.59, 25.16]).bindPopup('Σφυρίδα παρατηρημένη')]),
+      rofos: L.layerGroup([L.marker([37.6, 25.15]).bindPopup('Ροφός πιθανή εμφάνιση')]),
+      magiatiko: L.layerGroup([L.marker([37.62, 25.17]).bindPopup('Μαγιάτικο δραστήριο')]),
+      palamida: L.layerGroup([L.marker([37.64, 25.11]).bindPopup('Παλαμίδα καταγράφηκε')]),
+      safridi: L.layerGroup([L.marker([37.65, 25.14]).bindPopup('Σαφρίδι υψηλή πιθανότητα')])
+    };
 
-    // Εδώ μπορούμε να φορτώσουμε heatmap ή geojson με περιοχές
+    // Εμφάνιση default layer
+    let currentLayer = layers["sargos"];
+    currentLayer.addTo(map);
+
+    // Dropdown επιλογή
+    document.getElementById("fish-select").addEventListener("change", (e) => {
+      const fish = e.target.value;
+      if (currentLayer) {
+        map.removeLayer(currentLayer);
+      }
+      currentLayer = layers[fish];
+      if (currentLayer) {
+        currentLayer.addTo(map);
+      }
+    });
   </script>
-
 </body>
 </html>
