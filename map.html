@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+  <meta charset="UTF-8">
+  <title>Χάρτης Δραστηριότητας</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    body, html {
+      margin: 0;
+      height: 100%;
+    }
+    #map {
+      height: 100%;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Χάρτης -->
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+  <script>
+    // Αρχικοποίηση χάρτη στην Τήνο
+    const map = L.map('map').setView([37.6, 25.15], 11);
+
+    // Βασικό layer - δορυφορικός χάρτης OpenStreetMap
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Παράδειγμα σημείου ενδιαφέροντος
+    const marker = L.marker([37.61, 25.15]).addTo(map);
+    marker.bindPopup("<b>Σημείο Ψαρέματος</b><br>Πιθανή δραστηριότητα σαργού.");
+
+    // Εδώ μπορούμε να φορτώσουμε heatmap ή geojson με περιοχές
+  </script>
+
+</body>
+</html>
