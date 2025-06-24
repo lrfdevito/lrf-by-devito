@@ -2,177 +2,26 @@
 <html lang="el">
 <head>
   <meta charset="UTF-8" />
-  <title>LRF by De Vito - Light Rock Fishing</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" href="logo.png" type="image/png">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background: linear-gradient(to bottom right, #e0f2fe, #f8fafc);
-      color: #1e293b;
-      overflow-x: hidden;
-    }
-
-    nav {
-      background-color: #0f172a;
-      color: white;
-      padding: 12px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    }
-
-    nav img {
-      height: 40px;
-      margin-right: 10px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #60a5fa;
-    }
-
-    header {
-      background: url('cover.jpg') no-repeat center center / cover;
-      color: white;
-      text-align: center;
-      padding: 100px 20px;
-      position: relative;
-    }
-
-    header::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.4);
-      z-index: 0;
-    }
-
-    header > * {
-      position: relative;
-      z-index: 1;
-    }
-
-    header h1 {
-      font-size: 3em;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.7);
-    }
-
-    header p {
-      font-size: 1.3em;
-      max-width: 700px;
-      margin: 0 auto;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.6);
-    }
-
-    .buttons {
-      margin-top: 30px;
-    }
-
-    .buttons a {
-      background-color: #1d4ed8;
-      color: white;
-      padding: 12px 24px;
-      text-decoration: none;
-      margin: 10px;
-      border-radius: 6px;
-      font-weight: bold;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-      transition: background 0.3s, transform 0.2s;
-    }
-
-    .buttons a:hover {
-      background-color: #3b82f6;
-      transform: translateY(-2px);
-    }
-
-    section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    section ul {
-      margin-top: 15px;
-      line-height: 1.8em;
-    }
-
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #0f172a;
-      color: white;
-      font-size: 0.9em;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>LRF by De Vito</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- Μενού Πλοήγησης -->
-  <nav>
-    <div style="display: flex; align-items: center;">
-      <img src="logo.png" alt="LRF by De Vito logo">
-      <strong>LRF by De Vito</strong>
-    </div>
-    <div>
+  <header>
+    <img src="assets/logo.png" alt="LRF Logo" style="height:80px;" />
+    <nav>
       <a href="index.html">Αρχική</a>
       <a href="map.html">Χάρτης</a>
-      <a href="forecast.html">Πρόγνωση</a>
-      <a href="techniques.html">Τεχνικές</a>
-      <a href="contact.html">Επικοινωνία</a>
-    </div>
-  </nav>
-
-  <!-- Κεντρική Ενότητα -->
-  <header>
-    <h1>Light Rock Fishing στην Τήνο</h1>
-    <p>Ανακάλυψε τα καλύτερα σημεία, προβλέψεις δραστηριότητας και τεχνικές για LRF στα νησιά. Με πληροφορίες για στήρες, ροφούς, σαργούς και πολλά άλλα!</p>
-    <div class="buttons">
-      <a href="map.html">🔍 Χάρτης Δραστηριότητας</a>
-      <a href="forecast.html">📅 Πρόγνωση Ημερών</a>
-      <a href="techniques.html">🎣 Τεχνικές & Tips</a>
-    </div>
+      <a href="#">Πρόγνωση</a>
+      <a href="#">Τεχνικές</a>
+      <a href="#">Επικοινωνία</a>
+    </nav>
   </header>
 
-  <!-- Εισαγωγικό Κείμενο -->
-  <section>
-    <h2>Τι είναι το LRF;</h2>
-    <p>
-      Το Light Rock Fishing είναι μια τεχνική ψαρέματος που εστιάζει σε μικρό εξοπλισμό, τεχνητά δολώματα και ακτές με πλούσια βιοποικιλότητα.
-      Μέσα από την πλατφόρμα μας, μπορείς να ενημερωθείς για:
-    </p>
-    <ul>
-      <li>Δυναμικές προβλέψεις δραστηριότητας για διάφορα είδη</li>
-      <li>Ανάλυση σημείων ψαρέματος σε χάρτη</li>
-      <li>Εκπαιδευτικό υλικό για αρχάριους & έμπειρους</li>
-      <li>Φωτογραφίες, βίντεο και τεχνικές από πραγματικές εξορμήσεις</li>
-    </ul>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    © 2025 LRF by De Vito | Φτιαγμένο με αγάπη για το LRF στην Ελλάδα
-  </footer>
-
+  <main>
+    <h1>Καλώς ήρθες στο LRF by De Vito</h1>
+    <p>Η νέα σου βάση για Light Rock Fishing στην Τήνο και όχι μόνο.</p>
+    <a href="map.html">▶️ Μετάβαση στον χάρτη</a>
+  </main>
 </body>
 </html>
